@@ -6,6 +6,9 @@ import sys
 import asyncio
 import asyncssh
 import typing
+
+#---------------------------------------------------------------------------
+# ここから
 # 自分のBotのアクセストークンに置き換えてください
 TOKEN = 'YOUR_DISCORD_BOT_TOKEN'
 # サービスアカウントID
@@ -21,16 +24,19 @@ hostname = 'YOUR_VM_IP_ADDRESS'
 username = 'YOUR_VM_USERNAME'
 private_key_path = 'YOUR_PRIVATE_KEY_PATH'  # SSH秘密鍵のパス
 
-# DiscordのIntentsを設定
-intents = discord.Intents.default()
-intents.message_content = True
-bot = commands.Bot(command_prefix='!', intents=intents)
-
 # ゲーム名とModのリスト サンプルです
 GAME_MODS = {
     "minecraft": ["vanilla_1.21.5"],
     "terraria": ["vanilla_expart", "calamity_andmore"],
 }
+# ここまでの情報を記述してください
+# ここからは下は必要に応じて変更してください
+#---------------------------------------------------------------------------
+# DiscordのIntentsを設定
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='!', intents=intents)
+
 # VMインスタンスの起動状態
 VM_State = False
 # それぞれのサーバーの起動状態
