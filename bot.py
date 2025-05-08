@@ -28,6 +28,7 @@ private_key_path = 'YOUR_PRIVATE_KEY_PATH'  # SSH秘密鍵のパス
 GAME_MODS = {
     "minecraft": ["vanilla_1.21.5"],
     "terraria": ["vanilla_expart", "calamity_andmore"],
+    "ゲーム名": ["Mod1", "Mod2"],
 }
 # ここまでの情報を記述してください
 # ここからは下は必要に応じて変更してください
