@@ -1,14 +1,34 @@
-# GCP-discord-bot
-Google Cloude Platform、Computer Engineの仮想(vm)インスタンスを使用してゲームサーバを起動するdiscordBotのスクリプトです。
-## このスクリプトのみではゲームサーバを起動できないので注意してください。
-# 使用方法
-まず、GCPの無料枠でVMインスタンスを作成し、このスクリプトをcloneなり、ダウンロードするなりして入れます。
+# Discord ゲームサーバー管理Bot
 
-無料枠に関しては(https://cloud.google.com/free/docs/free-cloud-features#compute)こちらを参照。
-例:
-start_minecraft_vanilla.sh
-stop_minecraft_vanilla.sh
+## 何ができるBot？
+Discord上でゲームサーバーを管理するBotです。GCP上の仮想マシン(VM)を操作してゲームサーバーの起動・停止ができます。
 
-bot.py内の10~34行目を変更してください。
+## 主な機能
+- `/start` - ゲームサーバーを起動する
+- `/stop` - ゲームサーバーを停止する
+- `/state` - VMとゲームサーバーの状態を確認する
+- `/reset` - VM強制停止（管理者用）
+- `/state_set` - サーバー状態の手動変更（エラー時用）
 
-ゲームの鯖自体は自分で用意する必要があります。
+## 仕組み
+1. **Discord連携**
+   - スラッシュコマンドでBot操作
+   - ゲームとModを選択可能
+
+2. **GCP連携**
+   - Google Cloudの仮想マシンを起動/停止
+   - SSH接続でサーバー操作
+
+3. **管理機能**
+   - 複数ゲーム・Modに対応
+   - サーバー状態の監視
+   - 未使用時は自動停止
+
+## ⚠️ 注意事項
+- **事前準備が必要**:
+  - GCP上にゲームサーバー用のVMを作成しておく必要があります
+  - VM内に各ゲーム起動用のシェルスクリプト(`.sh`ファイル)を用意する必要があります
+  - シェルスクリプトのパス(`/home/your_username/shell_script`)はコード内で指定されており、各自の環境に合わせて変更が必要です
+  - 起動スクリプトは、シェルスクリプトのパスにゲーム名のフォルダを作成し`start_ゲーム名_Mod名.sh`、停止スクリプトは`stop_ゲーム名_Mod名.sh`という命名規則に従う必要があります。
+  例:`/home/your_username/shell_script/minecraft/start_minecraft_vanilla.sh`
+  - 
