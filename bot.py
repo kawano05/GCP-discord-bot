@@ -30,6 +30,8 @@ GAME_MODS = {
     "terraria": ["vanilla_expart", "calamity_andmore"],
     "ゲーム名": ["Mod1", "Mod2"],
 }
+# 各ゲームを起動するためのシェルスクリプトを入れるフォルダのパス
+base_script_path = "/home/ユーザ名/Shell_Script/"  # パスに合わせて調整してください
 # ここまでの情報を記述してください
 # ここからは下は必要に応じて変更してください
 #---------------------------------------------------------------------------
@@ -307,7 +309,7 @@ async def execute_remote_script(is_start:bool,game: str, mod: str = None) -> str
             script_name += ".sh"
 
             # スクリプトのパス（VMのパスに合わせて調整してください）
-            script_path = f"/home/ripvv0105/Shell_Script/{game}/{script_name}"
+            script_path = f"{base_script_path}{game}/{script_name}"
             
             # スクリプトを実行         
             result = await conn.run(f"bash {script_path}")
