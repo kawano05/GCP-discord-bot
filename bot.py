@@ -24,6 +24,9 @@ hostname = 'YOUR_VM_IP_ADDRESS'
 username = 'YOUR_VM_USERNAME'
 private_key_path = 'YOUR_PRIVATE_KEY_PATH'  # SSH秘密鍵のパス
 
+# VMのシェルスクリプトのパス
+Base_Shell_Script_Path = '/home/your_username/shell_script'  # VM内のシェルスクリプトのパス
+
 # ゲーム名とModのリスト サンプルです
 GAME_MODS = {
     "minecraft": ["vanilla_1.21.5"],
@@ -309,7 +312,7 @@ async def execute_remote_script(is_start:bool,game: str, mod: str = None) -> str
             script_name += ".sh"
 
             # スクリプトのパス（VMのパスに合わせて調整してください）
-            script_path = f"{base_script_path}{game}/{script_name}"
+            script_path = f"{Base_Shell_Script_Path}/{game}/{script_name}"
             
             # スクリプトを実行         
             result = await conn.run(f"bash {script_path}")
